@@ -1,19 +1,25 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const todoText = ref("");
 
-defineEmits(["addTodo"])
-
+defineEmits(["addTodo, sortTodos, clearAll"]);
 </script>
 <template>
-
-    <form @submit.prevent="() => $emit('addTodo', todoText)">
-        <h1>Todo List</h1>
-        <input v-model="todoText" />
-        <button>Spara</button>
-     </form>
-
+  <form @submit.prevent="() => $emit('addTodo', todoText)">
+    <h1>Vad vill du göra?</h1>
+    <input type="text" v-model="todoText" />
+    <button class="saveTodo">Spara</button>
+  </form>
+  <button class="sortBtn" @click="() => $emit('sortTodos')">Sortera A-Ö</button>
+  <button class="clearBtn" @click="() => $emit('clearAll')">Rensa Allt</button>
 </template>
-<style>
+<style scoped>
+.sortBtn,
+.clearBtn,
+.saveTodo {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
 </style>
