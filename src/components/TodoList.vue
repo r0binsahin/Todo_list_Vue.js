@@ -27,11 +27,7 @@ const removeTodo = (i: number)=>{
 }
 
 const sortTodos = ()=>{
-     todos.value.sort((a: Todo, b: Todo)=>{
-        if(a.todoText >b.todoText) return 1;
-        if(a.todoText< b.todoText) return -1;
-        return 0;
-    }) 
+     todos.value.sort((a: Todo, b: Todo)=> a.todoText >b.todoText ?  1 :  -1) 
 
     console.log(todos.value)
 }
