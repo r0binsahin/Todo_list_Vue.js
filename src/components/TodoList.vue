@@ -9,6 +9,7 @@ const todos = ref<Todo[]>(JSON.parse(localStorage.getItem("todos") || "[]"));
 const handleToggle = (i: number) =>{
     todos.value[i].done = !todos.value[i].done;
     saveToLS(todos.value)
+    sortDoneTodos()
 }
 
 const addTodo = (todoText: string)=>{
@@ -28,6 +29,7 @@ const removeTodo = (i: number)=>{
 
 const sortTodos = ()=>{
      todos.value.sort((a: Todo, b: Todo)=> a.todoText >b.todoText ?  1 :  -1) 
+     sortDoneTodos()
 
     console.log(todos.value)
 }
@@ -37,6 +39,9 @@ const clearAll = ()=>{
     window.location.reload();
 }
 
+const sortDoneTodos = ()=>{
+    todos.value.sort((a: Todo, b: Todo) => a.done - b.done)
+}
 
 
 </script>

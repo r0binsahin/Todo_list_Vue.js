@@ -11,11 +11,10 @@ defineEmits(["toggleTodo", "removeTodo", "sortTodo"]);
 <template>
   <div class="todoContainer">
     <p :class="todo.done ? 'done' : ' '">{{ todo.todoText }}</p>
-    <input
+    <button
       class="checkBtn"
-      type="checkbox"
       @click="() => $emit('toggleTodo')"
-    />
+    ><i class="bi bi-check-square-fill"></i></button>
     <button class="dltBtn" @click="() => $emit('removeTodo', 'index')">
       <i class="bi bi-x-circle"></i>
     </button>
