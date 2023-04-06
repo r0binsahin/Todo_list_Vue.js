@@ -11,12 +11,11 @@ defineEmits(["toggleTodo", "removeTodo", "sortTodo"]);
 <template>
   <div class="todoContainer">
     <p :class="todo.done ? 'done' : ' '">{{ todo.todoText }}</p>
-    <button
-      class="checkBtn"
-      @click="() => $emit('toggleTodo')"
-    ><i class="bi bi-check-square-fill"></i></button>
+    <button class="checkBtn" @click="() => $emit('toggleTodo')">
+      <i  id="checkIcon" class="bi bi-check-square-fill"></i>
+    </button> 
     <button class="dltBtn" @click="() => $emit('removeTodo', 'index')">
-      <i class="bi bi-x-circle"></i>
+      <i id="dltIcon" class="bi bi-x-circle"></i>
     </button>
   </div>
 </template>
@@ -31,26 +30,34 @@ defineEmits(["toggleTodo", "removeTodo", "sortTodo"]);
 }
 
 .dltBtn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 25px;
-  height: 25px;
-  margin: 10px;
+    border-style: none;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+   height: 25px;
+   margin: 10px;
 }
 .checkBtn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 25px;
-  height: 25px;
-  margin: 10px;
+    border-style: none;
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    margin: 10px;
 }
 
-/* .bi {
-    width: 20px;
-    height: 20px;
-} */
+ #checkIcon {
+    background-color: green;
+    color: white;
+} 
+#dltIcon {
+    background-color: red;
+    color: white;
+} 
 </style>
