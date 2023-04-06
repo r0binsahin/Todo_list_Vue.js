@@ -8,8 +8,9 @@ const todos = ref<Todo[]>(JSON.parse(localStorage.getItem("todos") || "[]"));
 
 const handleToggle = (i: number) =>{
     todos.value[i].done = !todos.value[i].done;
-    saveToLS(todos.value)
     sortDoneTodos()
+    saveToLS(todos.value)
+
 }
 
 const addTodo = (todoText: string)=>{
@@ -18,7 +19,7 @@ const addTodo = (todoText: string)=>{
 
 }
 
-const saveToLS = (todos: Todo[])=>{ 
+const saveToLS = (todos: Todo[])=>{
     localStorage.setItem("todos", JSON.stringify(todos));
 }
 
@@ -28,7 +29,7 @@ const removeTodo = (i: number)=>{
 }
 
 const sortTodos = ()=>{
-     todos.value.sort((a: Todo, b: Todo)=> a.todoText >b.todoText ?  1 :  -1) 
+     todos.value.sort((a: Todo, b: Todo)=> a.todoText > b.todoText ?  1 :  -1)
      sortDoneTodos()
 
     console.log(todos.value)
@@ -40,15 +41,20 @@ const clearAll = ()=>{
 }
 
 const sortDoneTodos = ()=>{
-    todos.value.sort((a: Todo, b: Todo) => a.done - b.done)
+    todos.value.sort((a: Todo, b: Todo)=> a.done === b.done? 0 : a.done? 1 : -1 )
 }
-
 
 </script>
 <template>
-    <AddTodo @addTodo="addTodo" @sort-todos="sortTodos" @clear-all="clearAll"></AddTodo>
-    <ShowTodos :todo ="todo" v-for = "(todo, index ) in todos " @toggle-todo ="()=> handleToggle(index)" @remove-todo="()=> removeTodo(index)" :key = "index">
-    </ShowTodos>
+  <AddTodo @addTodo="addTodo" @sort-todos="sortTodos" @clear-all="clearAll">
+  </AddTodo>
+  <ShowTodos
+    :todo="todo"
+    v-for="(todo, index) in todos"
+    @toggle-todo="() => handleToggle(index)"
+    @remove-todo="() => removeTodo(index)"
+    :key="index"
+  >
+  </ShowTodos>
 </template>
-<style>
-</style>
+<style></style>
