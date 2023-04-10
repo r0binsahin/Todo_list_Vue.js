@@ -11,53 +11,75 @@ defineEmits(["toggleTodo", "removeTodo", "sortTodo"]);
 <template>
   <div class="todoContainer">
     <p :class="todo.done ? 'done' : ' '">{{ todo.todoText }}</p>
-    <button class="checkBtn" @click="() => $emit('toggleTodo')">
-      <i  id="checkIcon" class="bi bi-check-square-fill"></i>
-    </button> 
-    <button class="dltBtn" @click="() => $emit('removeTodo', 'index')">
-      <i id="dltIcon" class="bi bi-x-circle"></i>
-    </button>
+
+    <span class="buttons">
+      <button class="checkBtn" @click="() => $emit('toggleTodo')">
+        <i id="checkIcon" class="bi bi-check-square-fill"></i>
+      </button>
+      <button class="dltBtn" @click="() => $emit('removeTodo', 'index')">
+        <i id="dltIcon" class="bi bi-x-circle"></i>
+      </button>
+    </span>
   </div>
 </template>
 <style scoped>
 .todoContainer {
+  width: 80%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 rgb(183, 178, 178);
+  margin-top: 10px;
 }
 .done {
   text-decoration: line-through;
 }
 
-.dltBtn {
-    border-style: none;
-    background-color: red;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 25px;
-   height: 25px;
-   margin: 10px;
-}
-.checkBtn {
-    border-style: none;
-    background-color: green;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 25px;
-    height: 25px;
-    margin: 10px;
+.buttons {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  padding: 10px;
 }
 
- #checkIcon {
-    background-color: green;
-    color: white;
-} 
-#dltIcon {
-    background-color: red;
-    color: white;
-} 
+.dltBtn, .checkBtn {
+  border-style: none;
+  background-color: #efa9ae;
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 15%;
+}
+.checkBtn {
+  background-color: #b7e3cc;
+  margin-right: 10px;
+}
+
+.checkBtn:hover {
+  background-color: #6ddaa1;
+}
+
+#checkIcon, #dltIcon {
+  color: white;
+}
+
+.dltBtn:hover  {
+  background-color: #f08c92;
+}
+
+p {
+margin-left: 10px;
+}
+
+@media screen and (min-width: 768px){
+
+  .todoContainer {
+  width: 30%;
+}
+   
+ }
+
 </style>
