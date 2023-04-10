@@ -59,6 +59,7 @@ form {
   width: 100px;
   background-color: white;
   box-shadow: 0 0 5px 0 rgb(165, 160, 160);
+  cursor: pointer;
 }
 
 .sortBtn:hover,

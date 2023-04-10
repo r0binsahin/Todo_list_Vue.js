@@ -52,6 +52,7 @@ defineEmits(["toggleTodo", "removeTodo", "sortTodo"]);
   width: 25px;
   height: 25px;
   border-radius: 15%;
+  cursor: pointer;
 }
 .checkBtn {
   background-color: #b7e3cc;

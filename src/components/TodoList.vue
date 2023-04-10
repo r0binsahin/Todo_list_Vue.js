@@ -14,9 +14,12 @@ const handleToggle = (i: number) =>{
 }
 
 const addTodo = (todoText: string)=>{
-    todos.value.push(new Todo(todoText, false))
-    saveToLS(todos.value)
-
+    if(todoText.length === 0){
+        return alert("Du måste skriva något")
+    } else {
+        todos.value.push(new Todo(todoText, false))
+        saveToLS(todos.value)
+    }
 }
 
 const saveToLS = (todos: Todo[])=>{
